@@ -1,0 +1,2 @@
+rootProject.name='ScopeStorage_Kotlin'
+include ':app'
