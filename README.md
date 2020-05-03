@@ -41,7 +41,7 @@ The recommended way to share the content of a private file is using the ```FileP
 
 Following steps for create FileProvider:
 1. Android Manifest
-```
+```xml
 <application>
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -55,7 +55,7 @@ Following steps for create FileProvider:
  ```
     
 2. Specifying available files in ```provider_paths.xml```   
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
     <external-cache-path
@@ -71,7 +71,7 @@ Following steps for create FileProvider:
 ```
 
 3. Generating content URI for a file  
-```
+```kotlin
 val folder = File("${getExternalFilesDir(Environment.DIRECTORY_DCIM)}")
         folder.mkdirs()
 
@@ -89,7 +89,7 @@ val folder = File("${getExternalFilesDir(Environment.DIRECTORY_DCIM)}")
 ```
 
 ## Take a photo or Select Image from gallery  
-```
+```kotlin
  private fun chooseImage() {
         startActivityForResult(getPickImageIntent(), 100)
     }
@@ -125,7 +125,7 @@ val folder = File("${getExternalFilesDir(Environment.DIRECTORY_DCIM)}")
 ## Read Bitmap from URI
 In ```onActivityResult()``` intentData parameter contains URI if user selects image from gallery, otherwise data will be available in imageUri which we were created earlier.
 
-```
+```kotlin
 @Throws(IOException::class)
 private fun getBitmapFromUri(uri: Uri): Bitmap {
     val parcelFileDescriptor: ParcelFileDescriptor = contentResolver.openFileDescriptor(uri, "r")
